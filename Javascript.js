@@ -74,7 +74,7 @@ function collisionDetection(){
 		if(sphere.position.x - sphereScale[0]/2 < boxes[i].position.x + boxScale[0]/2 && sphere.position.x + sphereScale[0]/2 > boxes[i].position.x - boxScale[0]/2  || sphere.position.x + sphereScale[0]/2 > boxes[i].position.x - boxScale[0]/2 && sphere.position.x - sphereScale[0]/2 < boxes[i].position.x - boxScale[0]/2 || sphere.position.x - sphereScale[0]/2 < boxes[i].position.x + boxScale[0]/2 && sphere.position.x + sphereScale[0]/2 > boxes[i].position.x + boxScale[0]/2){
 			if(sphere.position.z - sphereScale[2]/2 < boxes[i].position.z + boxScale[2]/2 && sphere.position.z + sphereScale[2]/2 > boxes[i].position.z - boxScale[2]/2){
 					alert("GAME OVER  score: "+ points);
-					location.reload();
+					sphere.position.z = 0;
 			}
 		}
 	}
@@ -143,7 +143,7 @@ loader.load( 'helvetiker_regular.typeface.json', function ( font ) {
   );
 
   var mesh = new THREE.Mesh( textGeometry, textMaterial );
-  mesh.position.z = -20;
+  mesh.position.z = -200;
   scene.add( mesh );
 
 } );
