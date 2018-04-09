@@ -75,6 +75,7 @@ function collisionDetection(){
 			if(sphere.position.z - sphereScale[2]/2 < boxes[i].position.z + boxScale[2]/2 && sphere.position.z + sphereScale[2]/2 > boxes[i].position.z - boxScale[2]/2){
 					alert("GAME OVER  score: "+ points);
 					sphere.position.z = 0;
+					camera.position.z = 13;
 			}
 		}
 	}
