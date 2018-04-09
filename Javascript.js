@@ -128,7 +128,7 @@ var loader = new THREE.FontLoader();
 
 loader.load( 'helvetiker_regular.typeface.json', function ( font ) {
 
-	var textGeometry = new THREE.TextGeometry( 'Hello three.js!', {
+	var textGeometry = new THREE.TextGeometry( 'Hallo Nico!', {
 		font: font,
 		size: 80,
 		height: 5,
@@ -144,7 +144,7 @@ loader.load( 'helvetiker_regular.typeface.json', function ( font ) {
   );
 
   var mesh = new THREE.Mesh( textGeometry, textMaterial );
-  mesh.position.z = -200;
+  mesh.position.set(-100, 50, -200);
   scene.add( mesh );
 
 } );
