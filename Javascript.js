@@ -129,7 +129,7 @@ var loader = new THREE.FontLoader();
 
 loader.load( 'helvetiker_regular.typeface.json', function ( font ) {
 
-	var textGeometry = new THREE.TextGeometry( 'Hallo Nico!', {
+	var textGeometry = new THREE.TextGeometry( points, {
 		font: font,
 		size: 80,
 		height: 5,
@@ -169,6 +169,7 @@ var update = function(){
 	//sphere.rotation.x += 0.05;
 	camera.position.z = camera.position.z-0.3;
 	sphere.position.z = sphere.position.z-0.3;
+	mesh.position.z = sphere.position.z-0.3;
 	sphere.rotation.y += 0.2;
 
 	//console.log(sphere.position.x);
