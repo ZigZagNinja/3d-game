@@ -126,7 +126,7 @@ scene.add( plane );
 
 
 //point text
-var loader = new THREE.FontLoader();
+/*var loader = new THREE.FontLoader();
 
 loader.load( 'helvetiker_regular.typeface.json', function ( font ) {
 
@@ -149,7 +149,7 @@ loader.load( 'helvetiker_regular.typeface.json', function ( font ) {
   mesh.position.set(-100, 50, -200);
   scene.add( mesh );
 
-} );
+} );*/
 
 
 
