@@ -76,6 +76,8 @@ function collisionDetection(){
 			if(sphere.position.z - sphereScale[2]/2 < boxes[i].position.z + boxScale[2]/2 && sphere.position.z + sphereScale[2]/2 > boxes[i].position.z - boxScale[2]/2){
 					alert("GAME OVER  score: "+ points);
 					sphere.position.z = 0;
+					sphere.position.x = 0;
+					camera.position.x = 0;
 					camera.position.z = 13;
 					//location.reload();
 			}
@@ -121,17 +123,6 @@ plane.position.y = -5;
 plane.receiveShadow = true;
 scene.add( plane );
 
-//(walls)
-var basicMaterial = new THREE.MeshBasicMaterial( {color: 0x808080, side: THREE.DoubleSide} );
-var wall1 = new THREE.Mesh(geometryplane, basicMaterial);
-wall1.rotation.y = Math.PI/2;
-wall1.position.x = 23;
-scene.add(wall1);
-
-var wall2 = new THREE.Mesh(geometryplane, basicMaterial);
-wall2.rotation.y = Math.PI/2;
-wall2.position.x = -23;
-scene.add(wall2);
 
 //images
 // instantiate a loader
@@ -144,9 +135,22 @@ loader.load(
 	function ( texture ) {
 		var image = new THREE.MeshBasicMaterial( {
 			map: texture
+			
+			//(walls)
+var basicMaterial = new THREE.MeshBasicMaterial( {color: 0x808080, side: THREE.DoubleSide} );
+var wall1 = new THREE.Mesh(geometryplane, basicMaterial);
+wall1.rotation.y = Math.PI/2;
+wall1.position.x = 23;
+scene.add(wall1);
+
+var wall2 = new THREE.Mesh(geometryplane, image);
+wall2.rotation.y = Math.PI/2;
+wall2.position.x = -23;
+scene.add(wall2);
 		 } );
 	},
 );
+
 
 
 
