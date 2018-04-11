@@ -24,6 +24,7 @@ var width = window.innerWidth;
 var height = window.innerHeight;
 var keyboard = {};
 var points = 0;
+var ThTwOn = 3;
 
 //scales
 var boxScale = [5, 20, 5];
@@ -74,9 +75,9 @@ function collisionDetection(){
 		if(sphere.position.x - sphereScale[0]/2 < boxes[i].position.x + boxScale[0]/2 && sphere.position.x + sphereScale[0]/2 > boxes[i].position.x - boxScale[0]/2  || sphere.position.x + sphereScale[0]/2 > boxes[i].position.x - boxScale[0]/2 && sphere.position.x - sphereScale[0]/2 < boxes[i].position.x - boxScale[0]/2 || sphere.position.x - sphereScale[0]/2 < boxes[i].position.x + boxScale[0]/2 && sphere.position.x + sphereScale[0]/2 > boxes[i].position.x + boxScale[0]/2){
 			if(sphere.position.z - sphereScale[2]/2 < boxes[i].position.z + boxScale[2]/2 && sphere.position.z + sphereScale[2]/2 > boxes[i].position.z - boxScale[2]/2){
 					alert("GAME OVER  score: "+ points);
-					/*sphere.position.z = 0;
-					camera.position.z = 13;*/
-					location.reload();
+					sphere.position.z = 0;
+					camera.position.z = 13;
+					//location.reload();
 			}
 		}
 	}
@@ -124,12 +125,12 @@ scene.add( plane );
 
 
 
-//poin text
+//point text
 var loader = new THREE.FontLoader();
 
 loader.load( 'helvetiker_regular.typeface.json', function ( font ) {
 
-	var textGeometry = new THREE.TextGeometry( points, {
+	var textGeometry = new THREE.TextGeometry( Have Fun, {
 		font: font,
 		size: 80,
 		height: 5,
@@ -145,7 +146,7 @@ loader.load( 'helvetiker_regular.typeface.json', function ( font ) {
   );
 
   var mesh = new THREE.Mesh( textGeometry, textMaterial );
-  mesh.position.set(-200, 50, -200);
+  mesh.position.set(-100, 50, -200);
   scene.add( mesh );
 
 } );
