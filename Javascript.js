@@ -121,6 +121,33 @@ plane.position.y = -5;
 plane.receiveShadow = true;
 scene.add( plane );
 
+//(walls)
+var basicMaterial = new THREE.MeshBasicMaterial( {color: 0x808080, side: THREE.DoubleSide} );
+var wall1 = new THREE.Mesh(geometryplane, basicMaterial);
+wall1.rotation.y = Math.PI/2;
+wall1.position.x = 23;
+scene.add(wall1);
+
+var wall2 = new THREE.Mesh(geometryplane, basicMaterial);
+wall2.rotation.y = Math.PI/2;
+wall2.position.x = -23;
+scene.add(wall2);
+
+//images
+// instantiate a loader
+var loader = new THREE.TextureLoader();
+
+loader.load(
+	// resource URL
+	'images/landscape.png',
+
+	function ( texture ) {
+		var image = new THREE.MeshBasicMaterial( {
+			map: texture
+		 } );
+	},
+);
+
 
 
 
