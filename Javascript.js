@@ -24,7 +24,6 @@ var width = window.innerWidth;
 var height = window.innerHeight;
 var keyboard = {};
 var points = 0;
-var ThTwOn = 3;
 
 //scales
 var boxScale = [5, 20, 5];
@@ -75,18 +74,15 @@ function collisionDetection(){
 		if(sphere.position.x - sphereScale[0]/2 < boxes[i].position.x + boxScale[0]/2 && sphere.position.x + sphereScale[0]/2 > boxes[i].position.x - boxScale[0]/2  || sphere.position.x + sphereScale[0]/2 > boxes[i].position.x - boxScale[0]/2 && sphere.position.x - sphereScale[0]/2 < boxes[i].position.x - boxScale[0]/2 || sphere.position.x - sphereScale[0]/2 < boxes[i].position.x + boxScale[0]/2 && sphere.position.x + sphereScale[0]/2 > boxes[i].position.x + boxScale[0]/2){
 			if(sphere.position.z - sphereScale[2]/2 < boxes[i].position.z + boxScale[2]/2 && sphere.position.z + sphereScale[2]/2 > boxes[i].position.z - boxScale[2]/2){
 					alert("GAME OVER  score: "+ points);
-					sphere.position.z = 0;
-					sphere.position.x = 0;
-					camera.position.x = 0;
+					location.reload();
+					/*sphere.position.z = 0;
 					camera.position.z = 13;
-					//location.reload();
+					points = 0;*/
+					//return true;
 			}
 		}
 	}
 }
-
-
-
 
 
 
@@ -123,10 +119,21 @@ plane.position.y = -5;
 plane.receiveShadow = true;
 scene.add( plane );
 
+//(walls)
+var basicMaterial = new THREE.MeshBasicMaterial( {color: 0x808080, side: THREE.DoubleSide} );
+var wall1 = new THREE.Mesh(geometryplane, basicMaterial);
+wall1.rotation.y = Math.PI/2;
+wall1.position.x = 23;
+scene.add(wall1);
+
+var wall2 = new THREE.Mesh(geometryplane, basicMaterial);
+wall2.rotation.y = Math.PI/2;
+wall2.position.x = -23;
+scene.add(wall2);
 
 //images
 // instantiate a loader
-var loader = new THREE.TextureLoader();
+/*var loader = new THREE.TextureLoader();
 
 loader.load(
 	// resource URL
@@ -135,40 +142,25 @@ loader.load(
 	function ( texture ) {
 		var image = new THREE.MeshBasicMaterial( {
 			map: texture
-			
-			//(walls)
-var basicMaterial = new THREE.MeshBasicMaterial( {color: 0x808080, side: THREE.DoubleSide} );
-var wall1 = new THREE.Mesh(geometryplane, basicMaterial);
-wall1.rotation.y = Math.PI/2;
-wall1.position.x = 23;
-scene.add(wall1);
-
-var wall2 = new THREE.Mesh(geometryplane, image);
-wall2.rotation.y = Math.PI/2;
-wall2.position.x = -23;
-scene.add(wall2);
 		 } );
 	},
-);
-
-
-
+);*/
 
 
 
 //point text
-/*var loader = new THREE.FontLoader();
+var loader = new THREE.FontLoader();
 
 loader.load( 'helvetiker_regular.typeface.json', function ( font ) {
 
-	var textGeometry = new THREE.TextGeometry( Have Fun, {
+	var textGeometry = new THREE.TextGeometry( 'Hi', {
 		font: font,
-		size: 80,
+		size: 20,
 		height: 5,
-		curveSegments: 12,
+		curveSegments: 5,
 		bevelEnabled: true,
-		bevelThickness: 10,
-		bevelSize: 8,
+		bevelThickness: 5,
+		bevelSize: 3,
 		bevelSegments: 5
 	} );
 
@@ -177,10 +169,11 @@ loader.load( 'helvetiker_regular.typeface.json', function ( font ) {
   );
 
   var mesh = new THREE.Mesh( textGeometry, textMaterial );
-  mesh.position.set(-100, 50, -200);
+  mesh.position.set(-7, 50, -150);
   scene.add( mesh );
+} );
 
-} );*/
+
 
 
 
@@ -201,7 +194,6 @@ var update = function(){
 	//sphere.rotation.x += 0.05;
 	camera.position.z = camera.position.z-0.3;
 	sphere.position.z = sphere.position.z-0.3;
-	//mesh.position.z = sphere.position.z-0.3;
 	sphere.rotation.y += 0.2;
 
 	//console.log(sphere.position.x);
